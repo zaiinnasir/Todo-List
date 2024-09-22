@@ -1,0 +1,164 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 10px;
+}
+
+h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.task-input {
+    display: flex;
+    margin: 20px 0;
+}
+
+input[type="text"],
+input[type="date"],
+#taskFilter {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+#taskFilter:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+button {
+    padding: 10px 15px;
+    background: #27296d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #004494;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+li:hover {
+    background: #f0f0f0;
+}
+
+li.completed {
+    text-decoration: line-through;
+    color: #999;
+    background-color: rgb(184, 224, 214);
+}
+
+.filters,
+.search-bar {
+    margin: 15px 0;
+}
+
+#taskFilter {
+    background-color: #27296d;
+    color: white;
+    border: 1px solid gray;
+}
+body.night-mode {
+    background-color: #333;
+    color: #f4f4f4;
+}
+
+body.night-mode .container {
+    background-color: #444;
+    color: gray;
+}
+body.night-mode .container h1 {
+    color: white;
+}
+
+body.night-mode button {
+    background: #27296d;
+    border: 1px solid gray;
+}
+
+body.night-mode button:hover {
+    background: #666;
+}
+body.night-mode #toggleTheme {
+    color: white;
+}
+
+#toggleTheme {
+    background-color: transparent;
+    border: none;
+    color: #333;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+input {
+    background-color: #f9f9f9;
+    color: #333;
+    border: 1px solid #ddd;
+}
+#searchInput{
+    width: 95%;
+}
+
+@media (max-width: 600px) {
+    .task-input {
+        flex-direction: column;
+    }
+
+    .task-input input[type="text"],
+    .task-input input[type="date"]
+     {
+        margin-right: 0;
+        margin-bottom: 10px;
+        width: 94%;
+    }
+    .task-input button{
+        width: 100%;
+    }
+
+    .filters {
+        flex-direction: column;
+    }
+}
