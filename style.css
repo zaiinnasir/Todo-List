@@ -161,4 +161,7 @@ input {
     .filters {
         flex-direction: column;
     }
+    #taskFilter {
+        width: 100%;   
+     }
 }

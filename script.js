@@ -20,6 +20,10 @@ function addTask() {
     const dueDate = dueDateInput.value;
 
     if (taskText === '') return;
+    if (dueDate === ''){
+        alert("add due date");
+        return;
+    }
 
     const task = { text: taskText, dueDate: dueDate || "mm/dd/yy", completed: false };
     tasks.push(task);
@@ -41,14 +45,15 @@ function renderTasks() {
         if (task.completed) {
             li.classList.add('completed');
         }
-        li.setAttribute('data-index', index); 
+        li.setAttribute('data-id', index);
         taskList.appendChild(li);
     });
 }
 
+
 function handleTaskAction(event) {
     const target = event.target;
-    const taskIndex = target.parentElement.getAttribute('data-index');
+    const taskIndex = target.parentElement.getAttribute('data-id'); 
 
     if (target.classList.contains('deleteBtn')) {
         tasks.splice(taskIndex, 1);
@@ -58,6 +63,7 @@ function handleTaskAction(event) {
         renderTasks();
     }
 }
+
 
 function toggleTheme() {
     document.body.classList.toggle('night-mode');
@@ -71,7 +77,7 @@ function filterTasks() {
     );
 
     taskList.innerHTML = ''; 
-    filteredTasks.forEach((task, index) => {
+    filteredTasks.forEach((task) => {
         const li = document.createElement('li');
         li.innerHTML = `
             <span class="task">${task.text} (${task.dueDate})</span>
@@ -81,7 +87,7 @@ function filterTasks() {
         if (task.completed) {
             li.classList.add('completed');
         }
-        li.setAttribute('data-index', index); 
+        li.setAttribute('data-id', tasks.indexOf(task)); 
         taskList.appendChild(li);
     });
 }
@@ -105,7 +111,7 @@ function filterTasksBySelection() {
 
 function renderFilteredTasks(filteredTasks) {
     taskList.innerHTML = ''; 
-    filteredTasks.forEach((task, index) => {
+    filteredTasks.forEach((task) => {
         const li = document.createElement('li');
         li.innerHTML = `
             <span class="task">${task.text} (${task.dueDate})</span>
@@ -115,7 +121,8 @@ function renderFilteredTasks(filteredTasks) {
         if (task.completed) {
             li.classList.add('completed');
         }
-        li.setAttribute('data-index', index);
+        li.setAttribute('data-id', tasks.indexOf(task)); 
         taskList.appendChild(li);
     });
 }
+
